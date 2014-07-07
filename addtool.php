@@ -45,8 +45,7 @@ table{
 
 </style>
 <link type="text/css" href="css/smoothness/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.multi-accordion-1.5.3.js"></script>
 <script type="text/javascript" src="addscript.js"></script>
 </head>
