@@ -1,61 +1,18 @@
 <?php
+parse_ini_file
 $host = "localhost";
-$user = "root";
-$password = "";
-$connect = mysql_connect($host, $user, $password) or die("Hey couldn't connect");
-mysql_select_db("fds", $connect) or die("Hey couldn't connect to db");
+$user = "fds";
+$password = "u7q2v7J6usSvrmnG";
+$db = 'fds';
+$mysqli = new mysqli($host,$user,$password, $db);
+if($mysqli->connect_errno) {
+	echo "Failed to connect to mysql". "( ". $mysqli->connect_errno . " ) - ". $mysqli->connect_error .".";
+}
 ?><!DOCTYPE HTML>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href='css/style.css'>
 <title>Tooling Setup</title>
-<style type="text/css">
-#table {
-	table-layout:auto;
-	border: 1px solid #e3e3e3;
-	background-color: #f2f2f2;
-    width: 80%;
-	margin-left:10%;
-	margin-right:10%;
-	border-radius: 6px;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	
-}
-#table td, #table th {
-	padding: 5px;
-	color: #333;
-}
-#table thead {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	padding: .2em 0 .2em .5em;
-	text-align: center;
-	color: #4B4B4B;
-	background-color: #C8C8C8;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e3e3e3), color-stop(.6,#B3B3B3));
-	background-image: -moz-linear-gradient(top, #D6D6D6, #B0B0B0, #B3B3B3 90%);
-	border-bottom: solid 1px #999;
-}
-#table th {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 17px;
-	line-height: 20px;
-	font-style: normal;
-	font-weight: normal;
-	text-align: center;
-	text-shadow: white 1px 1px 1px;
-	align: center;
-}
-
-#table td {
-	line-height: 20px;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	border-bottom: 1px solid #fff;
-	border-top: 1px solid #fff;
-}
-#table td:hover {
-	background-color: #fff;
-}
 </style>
 </head>
 <body>
@@ -76,8 +33,8 @@ mysql_select_db("fds", $connect) or die("Hey couldn't connect to db");
 </thead>
 <?php 
 $toolsql = "SELECT * FROM tools";
-$result = mysql_query($toolsql) or die(mysql_error());
-while($row = mysql_fetch_array($result)) {
+$result = $mysqli->query($toolsql) or die(mysql_error());
+while($row = $result->fetch_array(MYSQL_NUM)) {
 ?>
 	<tr>
 		<td>
